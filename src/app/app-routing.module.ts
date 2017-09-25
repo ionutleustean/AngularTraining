@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {MainComponent} from "./components/main/main.component";
 import {LoginComponent} from "./components/login/login.component";
-import {UsersModule} from "./modules/users/users.module";
 
 const routes: Routes = [
     {
@@ -20,7 +19,7 @@ const routes: Routes = [
     },
     {
         path: 'users',
-        loadChildren: () => UsersModule
+        loadChildren: 'app/modules/users/users.module#UsersModule'
     }
 ];
 
