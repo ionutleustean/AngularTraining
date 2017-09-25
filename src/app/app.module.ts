@@ -7,12 +7,14 @@ import {ButtonModule, InputTextModule, ToolbarModule} from "primeng/primeng";
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule} from "@angular/forms";
 import { MainComponent } from './components/main/main.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
         MainComponent,
+        NotFoundComponent,
     ],
     imports: [
         BrowserModule,
