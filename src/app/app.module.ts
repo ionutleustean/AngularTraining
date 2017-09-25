@@ -7,6 +7,7 @@ import {ButtonModule, InputTextModule, ToolbarModule} from "primeng/primeng";
 import { LoginComponent } from './components/login/login.component';
 import {FormsModule} from "@angular/forms";
 import { MainComponent } from './components/main/main.component';
+import {UsersModule} from "./modules/users/users.module";
 
 @NgModule({
     declarations: [
@@ -18,6 +19,7 @@ import { MainComponent } from './components/main/main.component';
         BrowserModule,
         AppRoutingModule,
         FormsModule,
+        UsersModule,
         ToolbarModule,
         ButtonModule,
         InputTextModule,
