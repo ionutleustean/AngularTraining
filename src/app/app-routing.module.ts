@@ -16,6 +16,10 @@ const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'people',
+        loadChildren: 'app/modules/people/people.module#PeopleModule'
     }
 ];
 

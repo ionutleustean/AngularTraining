@@ -27,3 +27,6 @@ import {RegisterComponent} from './components/register/register.component';
 })
 export class AppModule {
 }
+
+
+// ng g m modules/People --routing
