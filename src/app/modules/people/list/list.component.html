@@ -3,4 +3,9 @@
   <p-column field="name" header="Name"></p-column>
   <p-column field="email" header="Email"></p-column>
   <p-column field="phone" header="Phone"></p-column>
+  <p-column header="Action">
+    <ng-template let-person="rowData" pTemplate="body">
+      <button type="button" pButton class="button" (click)="goToDetail(person)" label="detail"></button>
+    </ng-template>
+  </p-column>
 </p-dataTable>

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-list',
@@ -13,17 +14,17 @@ export class ListComponent implements OnInit {
             name: 'PersonA',
             email: 'personA@mail.com',
             phone: '074511111'
-        },{
+        }, {
             id: 2,
             name: 'PersonB',
             email: 'personB@mail.com',
             phone: '074511111'
-        },{
+        }, {
             id: 3,
             name: 'PersonB',
             email: 'personB@mail.com',
             phone: '074511111'
-        },{
+        }, {
             id: 4,
             name: 'PersonC',
             email: 'personC@mail.com',
@@ -31,10 +32,17 @@ export class ListComponent implements OnInit {
         }
     ];
 
-    constructor() {
+    constructor(private router: Router, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
+    }
+
+    goToDetail(person: any) {
+        this.router.navigate(
+            ['../detail', person.id],
+            {relativeTo: this.route}
+        )
     }
 
 }
