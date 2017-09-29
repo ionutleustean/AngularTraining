@@ -1,11 +1,21 @@
-<p-dataTable [value]="data">
-  <p-column field="id" header="Id"></p-column>
-  <p-column field="name" header="Name"></p-column>
-  <p-column field="email" header="Email"></p-column>
-  <p-column field="phone" header="Phone"></p-column>
-  <p-column header="Action">
-    <ng-template let-person="rowData" pTemplate="body">
-      <button type="button" pButton class="button" (click)="goToDetail(person)" label="detail"></button>
-    </ng-template>
-  </p-column>
+<p-dataTable #dt
+        [value]="data"
+        [lazy]="true"
+        [rows]="5"
+        [paginator]="true"
+        [totalRecords]="totalRecords"
+        (onLazyLoad)="loadLazy($event)">
+    <p-column field="id" header="Id" [sortable]="true" [filter]="true" filterPlaceholder="cauta dupa id"></p-column>
+    <p-column field="name" header="Name" [sortable]="true">
+        <ng-template pTemplate="filter" let-col>
+            <p-dropdown [options]="names"  (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-dropdown>
+        </ng-template>
+    </p-column>
+    <p-column field="email" header="Email" [sortable]="true"></p-column>
+    <p-column field="phone" header="Phone" [sortable]="true"></p-column>
+    <p-column header="Action">
+        <ng-template let-person="rowData" pTemplate="body">
+            <button type="button" pButton class="button" (click)="goToDetail(person)" label="detail"></button>
+        </ng-template>
+    </p-column>
 </p-dataTable>

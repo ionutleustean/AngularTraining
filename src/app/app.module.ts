@@ -7,6 +7,7 @@ import {ButtonModule, InputTextModule, ToolbarModule} from "primeng/primeng";
 import {LoginComponent} from './components/login/login.component';
 import {FormsModule} from "@angular/forms";
 import {RegisterComponent} from './components/register/register.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import {RegisterComponent} from './components/register/register.component';
         ToolbarModule,
         ButtonModule,
         InputTextModule,
+        BrowserAnimationsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
