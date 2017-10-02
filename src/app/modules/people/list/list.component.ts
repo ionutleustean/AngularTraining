@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LazyLoadEvent, SelectItem} from 'primeng/primeng';
-import {PeopleService} from '../services/people.service';
 import 'rxjs/add/operator/map';
+import {PeopleService} from '../services/people-service/people.service';
 
 @Component({
     selector: 'app-list',

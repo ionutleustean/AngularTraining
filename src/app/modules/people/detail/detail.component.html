@@ -1,3 +1,28 @@
-<p>
-  detail for id={{id}}!
+<p xmlns="http://www.w3.org/1999/html">
+    detail for id={{id}}!
 </p>
+
+
+<div class="person-detail" *ngIf="person && !edit">
+    <p><span> Name: </span> <span> {{person.name}} </span></p>
+    <p><span> Age: </span> <span> {{person.age}} </span></p>
+    <p><span> Email: </span> <span> {{person.email}} </span></p>
+    <p><span> Phone: </span> <span> {{person.phone}} </span></p>
+
+    <button type="button" pButton label="Edit" (click)="toggleEdit()"></button>
+
+</div>
+
+
+<div class="person-edit" *ngIf="person && edit">
+    <form (ngSubmit)="onSubmit()" #personForm="ngForm" >
+        <p><span> Name: </span> <input type="text" pInputText [(ngModel)]="model.name" name="name" required/></p>
+        <p><span> Age: </span> <input type="text" pInputText [(ngModel)]="model.age" name="age" required/></p>
+        <p><span> Email: </span> <input type="text" pInputText [(ngModel)]="model.email" name="email" required email/></p>
+        <p><span> Phone: </span> <input type="text" pInputText [(ngModel)]="model.phone" name="phone"/></p>
+
+        <button type="button" pButton label="Close" (click)="toggleEdit()"></button>
+        <button type="submit" pButton label="Submit" [disabled]="!personForm.form.valid"></button>
+
+    </form>
+</div>
