@@ -1,17 +1,22 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UrlBuilderService} from './url-builder.service';
 import {LazyLoadEvent} from 'primeng/primeng';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import {IPerson} from './iPerson';
 
 @Injectable()
 export class PeopleService {
 
-    baseUrl:string = 'https://ng-training-server.herokuapp.com/people';
+    baseUrl:string = 'https://ng-training-server.herokuapp.com/people/';
+
+    header: HttpHeaders;
 
     constructor(private http: HttpClient,
                 private urlBuilder: UrlBuilderService) {
+        this.header = new HttpHeaders();
+
     }
 
     getPeople(event: LazyLoadEvent):Observable<any[]>{
@@ -31,5 +36,19 @@ export class PeopleService {
             }
         )
     }
+
+    getPersonById(id: string): Observable<IPerson>{
+        return <Observable<IPerson>>this.http.get(`${this.baseUrl}/${id}`)
+    }
+
+
+    updatePerson(person):Observable<any>{
+        this.header.append('Content-type','application/json');
+        return this.http.put(
+            `${this.baseUrl}/${person.id}`,
+            person,
+            {headers: this.header})
+    }
+
 
 }

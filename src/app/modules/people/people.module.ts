@@ -4,10 +4,11 @@ import {CommonModule} from '@angular/common';
 import {PeopleRoutingModule} from './people-routing.module';
 import {ListComponent} from './list/list.component';
 import {DetailComponent} from './detail/detail.component';
-import {ButtonModule, DataTableModule, DropdownModule, SharedModule} from 'primeng/primeng';
+import {ButtonModule, DataTableModule, DropdownModule, InputTextModule, SharedModule} from 'primeng/primeng';
 import {HttpClientModule} from '@angular/common/http';
 import {UrlBuilderService} from './services/url-builder.service';
 import {PeopleService} from './services/people.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -17,7 +18,9 @@ import {PeopleService} from './services/people.service';
         SharedModule,
         ButtonModule,
         HttpClientModule,
-        DropdownModule
+        DropdownModule,
+        FormsModule,
+        InputTextModule
     ],
     declarations: [
         ListComponent,

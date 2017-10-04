@@ -4,7 +4,8 @@
         [rows]="5"
         [paginator]="true"
         [totalRecords]="totalRecords"
-        (onLazyLoad)="loadLazy($event)">
+        (onLazyLoad)="loadLazy($event)"
+             [responsive]="true">
     <p-column field="id" header="Id" [sortable]="true" [filter]="true" filterPlaceholder="cauta dupa id"></p-column>
     <p-column field="name" header="Name" [sortable]="true">
         <ng-template pTemplate="filter" let-col>

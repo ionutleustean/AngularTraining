@@ -1,3 +1,23 @@
 <p>
-  detail for id={{id}}!
+    detail for id={{id}}!
 </p>
+
+
+<div class="person-detail" *ngIf="person && !edit">
+    <p> Name: {{person.name}} </p>
+    <p> Age: {{person.age}} </p>
+    <p> Phone: {{person.phone}} </p>
+    <p> Email: {{person.email}} </p>
+    <button type="button" pButton label="Edit" (click)="toggleEdit()"></button>
+</div>
+
+<div class="person-edit" *ngIf="person && edit">
+    <form #personForm="ngForm" (ngSubmit)="onSubmit()">
+        <p> Name: <input type="text" pInputText [(ngModel)]="model.name" name="name" required> </p>
+        <p> Age: <input type="number" pInputText [(ngModel)]="model.age" name="age" ></p>
+        <p> Phone: <input type="text" pInputText [(ngModel)]="model.phone" name="phone"></p>
+        <p> Email: <input type="email" pInputText [(ngModel)]="model.email" name="email" required email></p>
+        <button type="button" pButton label="Close" (click)="clear()"></button>
+        <button type="submit" pButton label="Submit" [disabled]="personForm.form.invalid" ></button>
+     </form>
+</div>
