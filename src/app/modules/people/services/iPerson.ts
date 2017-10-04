@@ -6,4 +6,5 @@ export interface IPerson{
     age: number;
     email: string;
     phone: string;
+    picture?: string;
 }
