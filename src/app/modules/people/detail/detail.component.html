@@ -14,7 +14,7 @@
 <div class="person-edit" *ngIf="person && edit">
     <form #personForm="ngForm" (ngSubmit)="onSubmit()">
         <p> Name: <input type="text" pInputText [(ngModel)]="model.name" name="name" required> </p>
-        <p> Age: <input type="number" pInputText [(ngModel)]="model.age" name="age" ></p>
+        <p> Age: <input type="number" pInputText [(ngModel)]="model.age" name="age" appAgeValidator></p>
         <p> Phone: <input type="text" pInputText [(ngModel)]="model.phone" name="phone"></p>
         <p> Email: <input type="email" pInputText [(ngModel)]="model.email" name="email" required email></p>
         <button type="button" pButton label="Close" (click)="clear()"></button>
@@ -23,3 +23,6 @@
 </div>
 
 
+<app-image a="asd" (b)="b=$event"></app-image>
+
+<div> B: {{b}} </div>

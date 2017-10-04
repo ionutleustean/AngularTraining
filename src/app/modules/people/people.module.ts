@@ -9,6 +9,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {UrlBuilderService} from './services/url-builder.service';
 import {PeopleService} from './services/people.service';
 import {FormsModule} from '@angular/forms';
+import { AgeValidatorDirective } from './directives/age-validator.directive';
+import { ImageComponent } from './image/image.component';
 
 @NgModule({
     imports: [
@@ -24,7 +26,9 @@ import {FormsModule} from '@angular/forms';
     ],
     declarations: [
         ListComponent,
-        DetailComponent
+        DetailComponent,
+        AgeValidatorDirective,
+        ImageComponent
     ],
     providers: [
         UrlBuilderService,
