@@ -18,6 +18,8 @@ export class DetailComponent implements OnInit {
 
     edit: boolean = false;
 
+    count: number;
+
     constructor(private activatedRoute: ActivatedRoute,
                 private peopleService: PeopleService) {
 
@@ -25,9 +27,16 @@ export class DetailComponent implements OnInit {
 
     ngOnInit() {
 
-        this.id = this.activatedRoute.snapshot.params['id'];
+        this.activatedRoute.params.subscribe(
+            data => {
+                this.id = data.id;
+                this.getPersonById(data.id);
+            }
+        )
+    }
 
-        this.peopleService.getPersonById(this.id)
+    getPersonById(id){
+        this.peopleService.getPersonById(id)
             .subscribe(
                 (data) => {
                     this.person = data;
@@ -38,21 +47,29 @@ export class DetailComponent implements OnInit {
                 }
             )
 
-    }
+
+    };
 
     toggleEdit() {
         this.edit = !this.edit;
     }
 
     onSubmit() {
-        this.peopleService.updatePerson(this.model).subscribe(
-            (data) => {
-                this.person = <IPerson>{...this.model};
-            },
-            (error) => {console.log(error)}
-        );
+        if (this.model.age > 18) {
+            this.peopleService.updatePerson(this.model).subscribe(
+                (data) => {
+                    this.person = <IPerson>{...this.model};
+                },
+                (error) => {
+                    console.log(error)
+                }
+            );
 
-        this.toggleEdit();
+            this.toggleEdit();
+        }
+        else {
+            alert("minor");
+        }
 
     }
 
@@ -62,4 +79,8 @@ export class DetailComponent implements OnInit {
     }
 
 
+    setCount(event: number) {
+
+        this.count = event
+    }
 }
